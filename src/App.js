@@ -20,39 +20,15 @@ const App = () => {
 
   const fetchNews = (page) => {
     setLoading(true);
-    // Simulate API call with local JSON data
-    
+    setTimeout(() => {
       const startIndex = (page - 1) * pageSize;
       const paginatedArticles = userdata.articles.slice(startIndex, startIndex + pageSize);
       setArticles(paginatedArticles);
-      console.log('paginatedArticles',paginatedArticles)
-      console.log('userdata',userdata)
       setTotalResults(20);
-      setLoading(false);
-   
+     
+    },1000)
   };
-  // const fetchNews = async (page) => {
-  //   setLoading(true);
-  //   try {
-  //     const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=in&apiKey=2aeadb34b95f4769a3691bfd6b18af63`, {
-  //       params: {
-  //         country: 'in',
-  //         apiKey: '2aeadb34b95f4769a3691bfd6b18af63',
-  //         page: page,
-  //         pageSize: pageSize,
-  //       },
-  //     });
-
-  //     console.log(userdata)
-  //     console.log(response.data.articles)
-  //     setArticles(response.data.articles);
-  //     setTotalResults(response.data.totalResults);
-  //     setLoading(false);
-  //   } catch (error) {
-  //     console.error('Error fetching news:', error);
-  //     setLoading(false);
-  //   }
-  // };
+  
 
   const handleNextPage = () => {
     if (currentPage < Math.ceil(totalResults / pageSize)) {
